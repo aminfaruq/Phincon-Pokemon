@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bhf-Rq-cli">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pokemon Detail Controller-->
+        <scene sceneID="lM7-rg-Gr1">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Bhf-Rq-cli" customClass="PokemonDetailController" customModule="Phincon_Pokemon_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Lo-M5-55C">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oJr-hI-9H4">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HCK-h3-Xwb">
+                                    <size key="itemSize" width="414" height="304"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonInfoCell" id="YD6-uO-7ey" customClass="PokemonInfoCell" customModule="Phincon_Pokemon_App" customModuleProvider="target">
+                                        <rect key="frame" x="1" y="0.0" width="388" height="306"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f2l-6z-RfV">
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="306"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8rI-ha-o63">
+                                                    <rect key="frame" x="101" y="20" width="186" height="186"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="8rI-ha-o63" secondAttribute="height" multiplier="1:1" priority="999" id="2MO-91-ybD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clefairy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGG-gA-4KL">
+                                                    <rect key="frame" x="8" y="226" width="372" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="999" constant="398" id="Jbm-tD-KRx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8rI-ha-o63" firstAttribute="width" secondItem="HGG-gA-4KL" secondAttribute="width" multiplier="0.5" priority="999" id="JGH-wo-SAZ"/>
+                                                <constraint firstItem="8rI-ha-o63" firstAttribute="centerX" secondItem="f2l-6z-RfV" secondAttribute="centerX" id="JGT-ml-MDY"/>
+                                                <constraint firstAttribute="bottom" secondItem="HGG-gA-4KL" secondAttribute="bottom" constant="20" id="Qjc-Il-1iX"/>
+                                                <constraint firstItem="8rI-ha-o63" firstAttribute="top" secondItem="f2l-6z-RfV" secondAttribute="top" constant="20" id="Qx6-Sr-FZ5"/>
+                                                <constraint firstItem="HGG-gA-4KL" firstAttribute="top" secondItem="8rI-ha-o63" secondAttribute="bottom" constant="20" id="aQC-VZ-3Nh"/>
+                                                <constraint firstItem="HGG-gA-4KL" firstAttribute="leading" secondItem="f2l-6z-RfV" secondAttribute="leading" constant="8" id="iMB-Sv-orq"/>
+                                                <constraint firstAttribute="trailing" secondItem="HGG-gA-4KL" secondAttribute="trailing" constant="8" id="kmp-tf-kN2"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="388" height="306"/>
+                                        <connections>
+                                            <outlet property="pokemonImg" destination="8rI-ha-o63" id="nYD-AF-3Yz"/>
+                                            <outlet property="pokemonLb" destination="HGG-gA-4KL" id="oxV-Aw-O53"/>
+                                            <outlet property="pokemonLbLeading" destination="iMB-Sv-orq" id="Raz-ND-Vbp"/>
+                                            <outlet property="pokemonLbTrailing" destination="kmp-tf-kN2" id="Dlk-YG-yzM"/>
+                                            <outlet property="pokemonLbWidth" destination="Jbm-tD-KRx" id="sbH-me-VaK"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonTypeCell" id="asn-kG-3GH" customClass="PokemonTypeCell" customModule="Phincon_Pokemon_App" customModuleProvider="target">
+                                        <rect key="frame" x="169.66666666666666" y="316" width="51" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1jU-n7-bdw">
+                                            <rect key="frame" x="0.0" y="0.0" width="51" height="61"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OAW-SZ-4zf">
+                                                    <rect key="frame" x="8" y="8" width="35" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="999" constant="35" id="G7P-Cu-Cqu"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="o2A-tn-R77"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OAW-SZ-4zf" secondAttribute="trailing" id="NhV-du-Faq"/>
+                                                <constraint firstItem="OAW-SZ-4zf" firstAttribute="top" secondItem="1jU-n7-bdw" secondAttribute="topMargin" id="Voo-XA-C1B"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OAW-SZ-4zf" secondAttribute="bottom" id="Zhr-eC-Dha"/>
+                                                <constraint firstItem="OAW-SZ-4zf" firstAttribute="leading" secondItem="1jU-n7-bdw" secondAttribute="leadingMargin" id="gIv-t3-AMS"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="51" height="61"/>
+                                        <connections>
+                                            <outlet property="imgView" destination="OAW-SZ-4zf" id="5yK-2A-nwe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonMovesCell" id="X57-mB-65P" customClass="PokemonMovesCell" customModule="Phincon_Pokemon_App" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="387" width="386" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wLQ-4m-pT6">
+                                            <rect key="frame" x="0.0" y="0.0" width="386" height="104"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbA-bP-sPc">
+                                                    <rect key="frame" x="8" y="8" width="370" height="88"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="999" constant="398" id="ZM6-A2-37h"/>
+                                                    </constraints>
+                                                    <string key="text">Moves:
+mega-punch, ice-punch, mega-kick, headbutt, tackle, body-slam, take-down, double-edge, bite, water-gun</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VbA-bP-sPc" secondAttribute="trailing" constant="8" id="3Db-zn-qok"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VbA-bP-sPc" secondAttribute="bottom" id="QgZ-ET-m6s"/>
+                                                <constraint firstItem="VbA-bP-sPc" firstAttribute="leading" secondItem="wLQ-4m-pT6" secondAttribute="leading" constant="8" id="hr7-3R-ZAT"/>
+                                                <constraint firstItem="VbA-bP-sPc" firstAttribute="top" secondItem="wLQ-4m-pT6" secondAttribute="topMargin" id="mT3-ke-rqs"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="386" height="104"/>
+                                        <connections>
+                                            <outlet property="pokemonLbLeading" destination="hr7-3R-ZAT" id="nW9-Pq-fJq"/>
+                                            <outlet property="pokemonLbTrailing" destination="3Db-zn-qok" id="MhN-PU-jh3"/>
+                                            <outlet property="pokemonMovesLb" destination="VbA-bP-sPc" id="IlH-Fs-Qmd"/>
+                                            <outlet property="pokemonMovesLbWidth" destination="ZM6-A2-37h" id="puk-Hm-I35"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ButtonCell" id="Z8j-vy-Q8f" customClass="ButtonCell" customModule="Phincon_Pokemon_App" customModuleProvider="target">
+                                        <rect key="frame" x="3" y="501" width="384" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KqS-iv-0Vo">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzP-Nv-s20">
+                                                    <rect key="frame" x="8" y="8" width="368" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="999" constant="398" id="oTP-VZ-ksh"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Catch!"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zzP-Nv-s20" firstAttribute="top" secondItem="KqS-iv-0Vo" secondAttribute="topMargin" id="1eA-yH-5zT"/>
+                                                <constraint firstItem="zzP-Nv-s20" firstAttribute="bottom" secondItem="KqS-iv-0Vo" secondAttribute="bottomMargin" id="XLv-LL-xPD"/>
+                                                <constraint firstItem="zzP-Nv-s20" firstAttribute="leading" secondItem="KqS-iv-0Vo" secondAttribute="leading" constant="8" id="zBI-Uc-4jF"/>
+                                                <constraint firstAttribute="trailing" secondItem="zzP-Nv-s20" secondAttribute="trailing" constant="8" id="zF1-Xe-mQl"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="384" height="45"/>
+                                        <connections>
+                                            <outlet property="btn" destination="zzP-Nv-s20" id="gbI-Pu-q5I"/>
+                                            <outlet property="btnImg" destination="oTP-VZ-ksh" id="Gha-tH-vPE"/>
+                                            <outlet property="btnLeading" destination="zBI-Uc-4jF" id="NSZ-OL-AED"/>
+                                            <outlet property="btnTrailing" destination="zF1-Xe-mQl" id="aiV-w2-aWa"/>
+                                            <outlet property="btnWidth" destination="oTP-VZ-ksh" id="lLg-Rl-14Q"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Bhf-Rq-cli" id="ekH-Zd-RZa"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RVt-5T-CJZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RVt-5T-CJZ" firstAttribute="bottom" secondItem="oJr-hI-9H4" secondAttribute="bottom" id="0fM-NE-Q7j"/>
+                            <constraint firstItem="oJr-hI-9H4" firstAttribute="top" secondItem="RVt-5T-CJZ" secondAttribute="top" id="HU6-WA-UWA"/>
+                            <constraint firstItem="RVt-5T-CJZ" firstAttribute="trailing" secondItem="oJr-hI-9H4" secondAttribute="trailing" id="efD-iA-67P"/>
+                            <constraint firstItem="oJr-hI-9H4" firstAttribute="leading" secondItem="RVt-5T-CJZ" secondAttribute="leading" id="uY7-0C-ynP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailCollectionView" destination="oJr-hI-9H4" id="fw3-8U-CRF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ab-dE-3T2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2583.0769230769229" y="83.175355450236964"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

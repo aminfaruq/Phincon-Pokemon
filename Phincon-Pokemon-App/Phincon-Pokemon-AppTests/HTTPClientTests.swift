@@ -7,6 +7,7 @@
 
 import XCTest
 import Phincon_Pokemon_App
+import Phincon_Pokemon
 
 class HTTPClientTests: XCTestCase {
    

@@ -9,10 +9,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 
-class PokemonDetailController: UIViewController {
-    
-    @IBOutlet weak var detailCollectionView: UICollectionView!
-    
+class PokemonDetailController: UICollectionViewController {
     var items = [PokemonDetailItem]()
     var pokemon: Pokemon?
     
@@ -36,15 +33,66 @@ class PokemonDetailController: UIViewController {
                     switch pokemonSaved {
                     case true:
                         self.isSaved = true
-                        self.detailCollectionView.reloadData()
+                        self.collectionView.reloadData()
                     case false:
                         self.isSaved = false
-                        self.detailCollectionView.reloadData()
+                        self.collectionView.reloadData()
                     }
                 }).disposed(by: disposeBag)
         }
     }
+}
+
+extension PokemonDetailController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        items.count
+    }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if items[section] == .types {
+            return pokemon?.detail?.types.count ?? 0
+        } else {
+            return 1
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch items[indexPath.section] {
+            
+        case .pokemonInformation:
+            return PokemonInfoCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width, pokemon: pokemon)
+        case .types:
+            let cell = collectionView.dequeueCustomCell(PokemonTypeCell.self, indexPath: indexPath)
+            if let pokemonType = pokemon?.detail?.types[indexPath.item].type.name {
+                cell.pokemonType = PokemonTypeEnum(rawValue: pokemonType)
+            }
+            return cell
+        case .moves:
+            return PokemonMovesCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width, moves: viewModel.setMoves(from: pokemon?.detail?.moves))
+        case .action:
+            let cell = ButtonCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width)
+            
+            if isSaved {
+                cell.btn.setTitle("Delete Pokemon", for: .normal)
+                cell.btn.addTarget(self, action: #selector(deletePokemon(_:)), for: .touchUpInside)
+            } else {
+                cell.btn.setTitle("Catch!", for: .normal)
+                cell.btn.addTarget(self, action: #selector(catchPokemon(_:)), for: .touchUpInside)
+            }
+            return cell
+        }
+    }
+    
+    @objc private func catchPokemon(_ sender: UIButton) {
+        showCatchLoading()
+    }
+    
+    @objc private func deletePokemon(_ sender: UIButton) {
+        deletePokemon()
+    }
+}
+
+extension PokemonDetailController {
     private func showCatchLoading() {
         let view = LoadingView(frame: self.view.frame)
         self.view.addSubview(view)
@@ -81,54 +129,5 @@ class PokemonDetailController: UIViewController {
             self.showToast(message: "Delete pokemon failed.", font: .systemFont(ofSize: 12.0))
         }
         
-    }
-}
-
-extension PokemonDetailController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if items[section] == .types {
-            return pokemon?.detail?.types.count ?? 0
-        } else {
-            return 1
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch items[indexPath.section] {
-            
-        case .pokemonInformation:
-            return PokemonInfoCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width, pokemon: pokemon)
-        case .types:
-            let cell = collectionView.dequeueCustomCell(PokemonTypeCell.self, indexPath: indexPath)
-            if let pokemonType = pokemon?.detail?.types[indexPath.item].type.name {
-                cell.pokemonType = PokemonTypeEnum(rawValue: pokemonType)
-            }
-            return cell
-        case .moves:
-            return PokemonMovesCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width, moves: viewModel.setMoves(from: pokemon?.detail?.moves))
-        case .action:
-            let cell = ButtonCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width)
-            
-            if isSaved {
-                cell.btn.setTitle("Delete Pokemon", for: .normal)
-                cell.btn.addTarget(self, action: #selector(deletePokemon(_:)), for: .touchUpInside)
-            } else {
-                cell.btn.setTitle("Catch!", for: .normal)
-                cell.btn.addTarget(self, action: #selector(catchPokemon(_:)), for: .touchUpInside)
-            }
-            return cell
-        }
-    }
-    
-    @objc private func catchPokemon(_ sender: UIButton) {
-        showCatchLoading()
-    }
-    
-    @objc private func deletePokemon(_ sender: UIButton) {
-        deletePokemon()
     }
 }

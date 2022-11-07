@@ -14,6 +14,7 @@ public struct PokemonListComposer {
         let vc = storyboard.instantiateInitialViewController() as? PokemonDetailController ?? PokemonDetailController()
         vc.pokemon = pokemon
         vc.title = "Pokemon Detail"
+        vc.hidesBottomBarWhenPushed = true
         caller.navigationController?.pushViewController(vc, animated: true)
     }
     

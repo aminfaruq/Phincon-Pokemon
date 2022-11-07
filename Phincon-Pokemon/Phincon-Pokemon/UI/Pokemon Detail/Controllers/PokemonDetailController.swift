@@ -73,8 +73,8 @@ class PokemonDetailController: UIViewController {
     private func deletePokemon() {
         let pokemonCatchResult = self.viewModel.catchPokemon()
         
-        if pokemonCatchResult == .success, let pokemon = self.pokemon {
-            self.viewModel.deletePokemon(pokemonName: pokemon.name)
+        if pokemonCatchResult == .success,let realm = try? Realm(),  let pokemon = self.pokemon {
+            self.viewModel.deletePokemon(realm: realm, pokemonName: pokemon.name)
             self.navigationController?.popViewController(animated: true)
         } else {
             print("Delete pokemon failed.")

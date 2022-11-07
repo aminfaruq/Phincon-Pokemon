@@ -19,18 +19,12 @@ public class PokemonDetailVM {
         }
     }
     
-    func deletePokemon(pokemonName: String) {
-        do {
-            let realm = try Realm()
-            let object = realm.objects(PokemonModel.self).filter("name = %@", pokemonName).first
-            try! realm.write {
-                if let obj = object {
-                    realm.delete(obj)
-                }
+    func deletePokemon(realm: Realm, pokemonName: String) {
+        let object = realm.objects(PokemonModel.self).filter("name = %@", pokemonName).first
+        try! realm.write {
+            if let obj = object {
+                realm.delete(obj)
             }
-        } catch let error as NSError {
-            // handle error
-            print("error - \(error.localizedDescription)")
         }
     }
     

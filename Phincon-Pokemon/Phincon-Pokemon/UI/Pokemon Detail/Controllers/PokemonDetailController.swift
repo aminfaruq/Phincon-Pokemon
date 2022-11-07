@@ -150,7 +150,7 @@ extension PokemonDetailController {
         alert.addTextField() { newTextField in
             newTextField.placeholder = placeholder
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in completion("") })
+        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in completion("") })
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             if
                 let textFields = alert.textFields,

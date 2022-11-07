@@ -75,13 +75,18 @@ extension PokemonListController {
 extension PokemonListController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isPokemonList {
+            self.emptyView(tableView: self.tableView,
+                           count: pokemonListViewModel.pokemons.value.count,
+                           title: "Connection Problem.",
+                           message: "Check your internet connection!")
+            
             return pokemonListViewModel.pokemons.value.count
         } else {
-            if myPokemonViewModel.pokemons.value.count == 0 {
-                self.tableView.setEmptyView(title: "You don't have any pokemon.", message: "Catch your pokemon first!")
-            } else {
-                self.tableView.restore()
-            }
+            self.emptyView(tableView: self.tableView,
+                           count: myPokemonViewModel.pokemons.value.count,
+                           title: "You don't have any pokemon.",
+                           message: "Catch your pokemon first!")
+            
             return myPokemonViewModel.pokemons.value.count
         }
     }
@@ -99,7 +104,6 @@ extension PokemonListController {
             cell.pokemon = pokemon
             return cell
         }
-                
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -124,5 +128,13 @@ extension PokemonListController {
     
     private func setupDequeueReusableCell(_ tableView: UITableView, row indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "PokemonListCell", for: indexPath)
+    }
+    
+    private func emptyView(tableView: UITableView, count: Int, title: String, message: String) {
+        if count == 0 {
+            tableView.setEmptyView(title: title, message: message)
+        } else {
+            tableView.restore()
+        }
     }
 }

@@ -12,11 +12,9 @@ import RealmSwift
 
 class PokemonListController: UITableViewController {
     var pokemonListViewModel: PokemonListVM!
-    
     var myPokemonViewModel: MyPokemonVM!
     
     var disposeBag = DisposeBag()
-    
     var isPokemonList = false
     
     override func viewDidLoad() {
@@ -79,6 +77,11 @@ extension PokemonListController {
         if isPokemonList {
             return pokemonListViewModel.pokemons.value.count
         } else {
+            if myPokemonViewModel.pokemons.value.count == 0 {
+                self.tableView.setEmptyView(title: "You don't have any pokemon.", message: "Catch your pokemon first!")
+            } else {
+                self.tableView.restore()
+            }
             return myPokemonViewModel.pokemons.value.count
         }
     }

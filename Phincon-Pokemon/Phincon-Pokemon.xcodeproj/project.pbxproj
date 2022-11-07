@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830403C42918DCED00D1330D /* UITableview+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830403C32918DCED00D1330D /* UITableview+Extention.swift */; };
 		8319DFF129135382008AD975 /* Phincon_Pokemon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8319DFF029135382008AD975 /* Phincon_Pokemon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8319DFF9291353DC008AD975 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8319DFF8291353DC008AD975 /* RxCocoa */; };
 		8319DFFB291353DC008AD975 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8319DFFA291353DC008AD975 /* RxSwift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830403C32918DCED00D1330D /* UITableview+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+Extention.swift"; sourceTree = "<group>"; };
 		8319DFED29135382008AD975 /* Phincon_Pokemon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Phincon_Pokemon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8319DFF029135382008AD975 /* Phincon_Pokemon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Phincon_Pokemon.h; sourceTree = "<group>"; };
 		8319E05A29135949008AD975 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				8319E06A29135949008AD975 /* CollectionView+Helpers.swift */,
 				8319E06B29135949008AD975 /* UIView+Extensions.swift */,
 				8319E06C29135949008AD975 /* UIImage+Helpers.swift */,
+				830403C32918DCED00D1330D /* UITableview+Extention.swift */,
 			);
 			path = "Helpers ";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				8319E08B29135949008AD975 /* HttpClientHelper.swift in Sources */,
 				8319E0A129135949008AD975 /* PokemonMovesCell.swift in Sources */,
 				8319E09029135949008AD975 /* CollectionView+Helpers.swift in Sources */,
+				830403C42918DCED00D1330D /* UITableview+Extention.swift in Sources */,
 				8319E09C29135949008AD975 /* PokemonDetailController.swift in Sources */,
 				8319E09B29135949008AD975 /* PokemonDetailVM.swift in Sources */,
 				8319E08F29135949008AD975 /* PokemonModel.swift in Sources */,

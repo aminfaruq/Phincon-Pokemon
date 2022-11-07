@@ -29,7 +29,8 @@ class PokemonMovesCell: UICollectionViewCell {
                 return
             }
             
-            pokemonMovesLb.text = "Moves:\n"+moves
+            let textString = "Moves:\n"+moves
+            pokemonMovesLb.attributedText = textString.withBoldText(text: "Moves:")
         }
     }
     

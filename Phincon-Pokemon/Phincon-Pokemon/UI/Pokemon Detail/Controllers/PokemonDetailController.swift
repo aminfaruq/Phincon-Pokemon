@@ -73,9 +73,11 @@ extension PokemonDetailController {
             let cell = ButtonCell._init(collectionView: collectionView, indexPath: indexPath, parentWidth: view.frame.width)
             
             if isSaved {
+                cell.btn.tintColor = .systemRed
                 cell.btn.setTitle("Delete Pokemon", for: .normal)
                 cell.btn.addTarget(self, action: #selector(deletePokemon(_:)), for: .touchUpInside)
             } else {
+                cell.btn.tintColor = .systemBlue
                 cell.btn.setTitle("Catch!", for: .normal)
                 cell.btn.addTarget(self, action: #selector(catchPokemon(_:)), for: .touchUpInside)
             }

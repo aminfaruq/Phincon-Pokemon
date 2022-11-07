@@ -108,14 +108,24 @@ extension PokemonDetailController {
             let pokemonCatchResult = self.viewModel.catchPokemon()
             view.showResult(with: pokemonCatchResult) { _ in
                 if pokemonCatchResult == .success, let realm = try? Realm(), let pokemon = self.pokemon, let pokemonDetail = pokemon.detail {
-                    self.viewModel.savePokemon(realm: realm, name: pokemon.name, artwork: pokemonDetail.artwork, moves: pokemonDetail.moves.map({$0.move.name}), types: pokemonDetail.types.map({$0.type.name}))
+                    
+                    self.alertWithTextField(title: "Change Pokemon Name", message: "Would you like to change Pokemon Name?") { result in
+                        if !result.isEmpty {
+                            self.viewModel.savePokemon(realm: realm, name: result, artwork: pokemonDetail.artwork, moves: pokemonDetail.moves.map({$0.move.name}), types: pokemonDetail.types.map({$0.type.name}))
+                            
+                        } else {
+                            self.viewModel.savePokemon(realm: realm, name: pokemon.name, artwork: pokemonDetail.artwork, moves: pokemonDetail.moves.map({$0.move.name}), types: pokemonDetail.types.map({$0.type.name}))
+                            
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 } else {
                     print("pokemon save failed.")
+                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
                 
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                    self.navigationController?.popViewController(animated: true)
-                }
             }
         }
     }
@@ -131,5 +141,26 @@ extension PokemonDetailController {
             self.showToast(message: "Delete pokemon failed.", font: .systemFont(ofSize: 12.0))
         }
         
+    }
+}
+
+extension PokemonDetailController {
+    private func alertWithTextField(title: String? = nil, message: String? = nil, placeholder: String? = nil, completion: @escaping ((String) -> Void) = { _ in }) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField() { newTextField in
+            newTextField.placeholder = placeholder
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in completion("") })
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            if
+                let textFields = alert.textFields,
+                let tf = textFields.first,
+                let result = tf.text {
+                completion(result)
+            } else {
+                completion("")
+            }
+        })
+        navigationController?.present(alert, animated: true)
     }
 }
